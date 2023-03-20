@@ -37,6 +37,6 @@ class QuestionAdmin(admin.ModelAdmin):
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Lesson, LessonAdmin)
 admin.site.register(Question, QuestionAdmin)
-admin.site.register(Lesson)
+admin.site.register(Choice)
 admin.site.register(Instructor)
 admin.site.register(Learner)

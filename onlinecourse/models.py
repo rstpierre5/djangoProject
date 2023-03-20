@@ -102,7 +102,7 @@ class Enrollment(models.Model):
     # Has a grade point for each question
     # Has question content
 class Question(models.Model):
-    lesson = models.ManyToManyField(Course)
+    lesson = models.ForeignKey(Course, on_delete=models.CASCADE)
     question_text = models.CharField(max_length=128, default="Question?")
     score = models.FloatField(default=1.0)
     
@@ -122,7 +122,7 @@ class Question(models.Model):
     # Choice content
     # Indicate if this choice of the question is a correct one or not
 class Choice(models.Model):
-    questions = models.ManyToManyField(Question)
+    questions = models.ForeignKey(Question, on_delete=models.CASCADE)
     is_correct = models.BooleanField(default=False)
     choice_text = models.CharField(max_length=128, default="Answer")
 
