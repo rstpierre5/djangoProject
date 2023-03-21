@@ -28,7 +28,7 @@
                         {% csrf_token %}
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Username" name="username" >
-                            <input type="password" class="form-control" placeholder="Username" name="psw" >
+                            <input type="password" class="form-control" placeholder="Password" name="psw" >
                             <button class="btn btn-primary" type="submit">Login</button>
                             <a class="btn btn-link" href="{% url 'onlinecourse:registration' %}">Sign Up</a>
                         </div>
@@ -52,13 +52,14 @@
         </div>
 
         {% if user.is_authenticated %}
-        <div id="exam" class="collapse.show">
-        {% else %}
-        <div id="exam" class="collapse">
+        <button class="btn btn-block btn-primary" type="button" data-toggle="collapse" data-target="#exam" aria-expanded="false" aria-controls="exam">
+            Start Exam
+        </button>
         {% endif %}
+            <div id="exam" class="collapse">
             {% if course.question_set.all.count > 0 %}
-            <div class="container">
-                <form id="questionform" action="point to a submit view" method="post">
+            <div>
+                <form id="questionform" action="{% url 'onlinecourse:submit' course.id %}" method="post">
                     <div class="card-columns-vertical">
                         {% for question in course.question_set.all %}
                         <div class="card mt-1">
