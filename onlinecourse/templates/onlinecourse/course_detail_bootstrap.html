@@ -59,9 +59,9 @@
             {% if course.question_set.all.count > 0 %}
             <div class="container">
                 <form id="questionform" action="point to a submit view" method="post">
-                    <div class="card-deck">
+                    <div class="card-columns-vertical">
                         {% for question in course.question_set.all %}
-                        <div class="card mt-1" style="display: block;">
+                        <div class="card mt-1">
                             <div class="card-header"><h5>{{ question.question_text}}</h5></div>
                             {% csrf_token %}
                             <div class="form-group">
